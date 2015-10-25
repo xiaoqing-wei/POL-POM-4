@@ -817,15 +817,15 @@ class MainWindow(wx.Frame):
             if(os.path.exists(icon)):
                 try:
                     self.bitmap = wx.Image(icon)
-                    if(self.bitmap.GetWidth() >= 48):
-                        self.bitmap.Rescale(48,48,wx.IMAGE_QUALITY_HIGH)
+                    if(self.bitmap.GetWidth() >= 48 * 2):
+                        self.bitmap.Rescale(48 * 2,48 * 2,wx.IMAGE_QUALITY_HIGH)
                         self.bitmap = self.bitmap.ConvertToBitmap()
-                        self.menuBitmap = wx.StaticBitmap(self.menu_gauche, id=-1, bitmap=self.bitmap, pos=(left_pos,20+(i+2)*20))
+                        self.menuBitmap = wx.StaticBitmap(self.menu_gauche, id=-1, bitmap=self.bitmap, pos=(left_pos * 2,20+(i+2)*20 * 2))
                 except:
                     pass
 
     def menuGaucheAddTitle(self,id,text,pos):
-        self.menuElem[id] = wx.StaticText(self.menu_gauche, -1, text,pos=(5,5+pos*20))
+        self.menuElem[id] = wx.StaticText(self.menu_gauche, -1, text,pos=(5 * 2,5+pos*20 * 2))
         self.menuElem[id].SetForegroundColour((0,0,0)) # For dark themes
         self.menuElem[id].SetFont(self.fontTitre)
 
@@ -838,18 +838,18 @@ class MainWindow(wx.Frame):
 
         try:
             self.bitmap = wx.Image(menu_icone)
-            self.bitmap.Rescale(16,16,wx.IMAGE_QUALITY_HIGH)
+            self.bitmap.Rescale(16 * 2,16 * 2,wx.IMAGE_QUALITY_HIGH)
             self.bitmap = self.bitmap.ConvertToBitmap()
-            self.menuImage[id] = wx.StaticBitmap(self.menu_gauche, id=-1, bitmap=self.bitmap, pos=(10,15+pos*20))
+            self.menuImage[id] = wx.StaticBitmap(self.menu_gauche, id=-1, bitmap=self.bitmap, pos=(10 * 2,15+pos*20 * 2))
 
         except:
             pass
 
         if(url == None):
-            self.menuElem[id] = wx.lib.hyperlink.HyperLinkCtrl(self.menu_gauche, 10000+pos, text, pos=(35,15+pos*20))
+            self.menuElem[id] = wx.lib.hyperlink.HyperLinkCtrl(self.menu_gauche, 10000+pos, text, pos=(35 * 2,15+pos*20 * 2))
             self.menuElem[id].AutoBrowse(False)
         else:
-            self.menuElem[id] = wx.lib.hyperlink.HyperLinkCtrl(self.menu_gauche, 10000+pos, text, pos=(35,15+pos*20))
+            self.menuElem[id] = wx.lib.hyperlink.HyperLinkCtrl(self.menu_gauche, 10000+pos, text, pos=(35 * 2,15+pos*20 * 2))
             self.menuElem[id].setURL(url)
 
         self.menuElem[id].SetColours(wx.Colour(0,0,0),wx.Colour(0,0,0),wx.Colour(0,0,0))
